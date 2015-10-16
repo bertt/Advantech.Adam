@@ -44,6 +44,10 @@ namespace Advantech.Adam
         {
             byte byRange;
             _adamSocket.AnalogInput().GetInputRange(channel, out byRange);
+            float startup;
+            var res = _adamSocket.AnalogOutput().SetCurrentValue(0, 10);
+            _adamSocket.AnalogOutput().GetStartupValue(0, out startup);
+
             return byRange;
         }
     }

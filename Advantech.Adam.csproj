@@ -32,12 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Advantech.Adam">
-      <HintPath>C:\Program Files (x86)\Advantech\AdamApax.NET Utility\Program\Advantech.Adam.dll</HintPath>
-    </Reference>
-    <Reference Include="Advantech.Common, Version=8.2.7.0, Culture=neutral, PublicKeyToken=c24039c75946be9c, processorArchitecture=MSIL">
+    <Reference Include="Advantech.Adam, Version=8.2.8.0, Culture=neutral, PublicKeyToken=c24039c75946be9c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Advantech\AdamApax.NET Utility\Program\Advantech.Common.dll</HintPath>
+      <HintPath>lib\Advantech.Adam.dll</HintPath>
+    </Reference>
+    <Reference Include="Advantech.Common, Version=8.2.8.0, Culture=neutral, PublicKeyToken=c24039c75946be9c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Advantech.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

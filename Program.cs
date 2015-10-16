@@ -9,7 +9,7 @@ namespace Advantech.Adam
             // code ideas from here: https://github.com/Mib314/Sol2Reg.ShortService/tree/master/Sol2Reg.IO.ADAM6000Com
             const string ipAdam6060 = "192.168.24.86";
             const string ipAdam6017 = "192.168.24.76";
-            Adam6060Demo(ipAdam6060);
+            // Adam6060Demo(ipAdam6060);
             Adam6017Demo(ipAdam6017);
             Console.ReadKey();
         }
