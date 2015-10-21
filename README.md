@@ -7,7 +7,7 @@ Sample code for reading/writing to Advantech Adam 6017 (Analog) and Advantech Ad
 
 Sample output in console:
 
-'
+```
 Start Adam6060 demo
 
 Adam6060 connected: True
@@ -19,7 +19,7 @@ Adam6060 Input channels: False, False, False, False, False, False
 Adam6060 Output channels:True, False, False, True, False, True
 
 End Adam6060 demo
-
+-----------------------------------------------------------------------------
 
 Start Adam6017 demo
 
@@ -44,4 +44,4 @@ Ch-6: 0.003 V
 Ch-7: 0.001 V
 
 End Adam6017 demo
-'
+```
