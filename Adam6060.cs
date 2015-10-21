@@ -1,11 +1,10 @@
 ﻿using System.Net.Sockets;
-using Advantech.Adam;
 
 namespace Advantech.Adam
 {
     public class Adam6060
     {
-        private string ip;
+        private readonly string _ip;
         private AdamSocket _adamSocket;
         private const int IdSartForInputChanel = 1;
         private const int IdSartForOutputChannel = 17;
@@ -14,13 +13,13 @@ namespace Advantech.Adam
 
         public Adam6060(string ip)
         {
-           this.ip = ip;
+           _ip = ip;
         }
 
         public bool Connect()
         {
             _adamSocket = new AdamSocket();
-            return  _adamSocket.Connect(ip, ProtocolType.Tcp, 502);
+            return  _adamSocket.Connect(_ip, ProtocolType.Tcp, 502);
         }
 
         public void Disconnect()

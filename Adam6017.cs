@@ -1,5 +1,4 @@
 ﻿using System.Net.Sockets;
-using Advantech.Adam;
 
 namespace Advantech.Adam
 {
@@ -8,7 +7,8 @@ namespace Advantech.Adam
         private string ip;
         private AdamSocket _adamSocket;
         private static readonly int TotalAnalogInputChannels = AnalogInput.GetChannelTotal(Adam6000Type.Adam6017);
-        private static readonly int TotalAnalogOutputChannels = AnalogOutput.GetChannelTotal(Adam6000Type.Adam6017);
+        private int _channelsTotal;
+        private Adam6000Type adamtype= Adam6000Type.Adam6017;
 
         public Adam6017(string ip)
         {
@@ -18,7 +18,13 @@ namespace Advantech.Adam
         public bool Connect()
         {
             _adamSocket = new AdamSocket();
-            return  _adamSocket.Connect(ip, ProtocolType.Tcp, 502);
+            _channelsTotal = AnalogInput.GetChannelTotal(adamtype);
+            return _adamSocket.Connect(AdamType.Adam6000, ip, ProtocolType.Tcp);
+        }
+
+        public string GetFloatFormat(byte b)
+        {
+            return AnalogInput.GetFloatFormat(adamtype, b);
         }
 
         public void Disconnect()
@@ -26,11 +32,21 @@ namespace Advantech.Adam
             _adamSocket.Disconnect();
         }
 
+        public int Channels => _channelsTotal;
+
         public string GetFirmWareVersion()
         {
             string firmWareVersion;
             _adamSocket.Configuration().GetFirmwareVer(out firmWareVersion);
             return firmWareVersion;
+        }
+
+        public int[] ReadInputRegs()
+        {
+            const int start = 1;
+            int[] iData;
+            _adamSocket.Modbus().ReadInputRegs(start, _channelsTotal, out iData);
+            return iData;
         }
 
         public bool[] GetEnabledChannels()
@@ -40,15 +56,29 @@ namespace Advantech.Adam
             return enabled;
         }
 
-        public byte ReadInputChannels(int channel)
+        public byte ReadInputChannelAsByte(int channel)
         {
-            byte byRange;
-            _adamSocket.AnalogInput().GetInputRange(channel, out byRange);
-            float startup;
-            var res = _adamSocket.AnalogOutput().SetCurrentValue(0, 10);
-            _adamSocket.AnalogOutput().GetStartupValue(0, out startup);
+            byte b;
+            _adamSocket.AnalogInput().GetInputRange(channel, out b);
+            return b;
+        }
 
-            return byRange;
+        public float ReadInputChannelAsFloat(int channel)
+        {
+            var b = ReadInputChannelAsByte(channel);
+            var inputRegs = ReadInputRegs();
+            var res = AnalogInput.GetScaledValue(adamtype, b, inputRegs[channel]);
+            return res;
+        }
+
+        public string ReadInputChannelAsString(int channel)
+        {
+            var b = ReadInputChannelAsByte(channel);
+            var ff = GetFloatFormat(b);
+            var inputRegs = ReadInputRegs();
+            var res = AnalogInput.GetScaledValue(adamtype, b, inputRegs[channel]);
+            var s = res.ToString(ff) + " " + AnalogInput.GetUnitName(adamtype, b);
+            return s;
         }
     }
 }
