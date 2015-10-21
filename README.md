@@ -7,7 +7,7 @@ Sample code for reading/writing to Advantech Adam 6017 (Analog) and Advantech Ad
 
 Sample output in console:
 
-`
+'
 Start Adam6060 demo
 
 Adam6060 connected: True
@@ -44,4 +44,4 @@ Ch-6: 0.003 V
 Ch-7: 0.001 V
 
 End Adam6017 demo
-`
+'
