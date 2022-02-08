@@ -4,8 +4,7 @@ Sample code for reading/writing to Advantech Adam 6017 (Analog) and Advantech Ad
 
 Before using this code install the drivers, see https://www.advantech.com/search/?q=ADAM-6060&st=support&sst=Driver&from=support
 
-![adam](![image](https://user-images.githubusercontent.com/538812/153036118-73175969-64ea-4cc7-8204-b40677869865.png)
-)
+![image](https://user-images.githubusercontent.com/538812/153036189-52478964-1f50-4e63-be6a-6f011a36db1e.png)
 
 Sample output in console:
 
