@@ -1,9 +1,11 @@
 # Advantech.Adam
 
-Sample code for reading/writing to Advantech Adam 6017 (Analog) and Advantech Adam 6060 (Digital).   
+Sample code for reading/writing to Advantech Adam 6017 (Analog) and Advantech Adam 6060 (Digital).
 
+Before using this code install the drivers, see https://www.advantech.com/search/?q=ADAM-6060&st=support&sst=Driver&from=support
 
-![adam](http://www.bb-elec.com/products/images/ADAM-6017.aspx)
+![adam](![image](https://user-images.githubusercontent.com/538812/153036118-73175969-64ea-4cc7-8204-b40677869865.png)
+)
 
 Sample output in console:
 
